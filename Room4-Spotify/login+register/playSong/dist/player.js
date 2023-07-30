@@ -1,6 +1,8 @@
 //פונקציה שמקשרת את הקלאסים שנימצאים ב-center.ts
 var song = getSongsFromLocalStorage();
 var singer = getSingersFromLocalStorage();
+var songIdSTR = localStorage.getItem("selectedSongId");
+var songId = JSON.parse(songIdSTR);
 // --------- Song Class with constructor -------
 var AudioElement = /** @class */ (function () {
     function AudioElement(name, artist, audio, img, id) {
@@ -68,7 +70,7 @@ function renderPlayer(songId) {
         console.error(error);
     }
 }
-///
+renderPlayer(songId);
 //------------ Function of song timeline (current time+remain time)
 function updateTimeAndProgress(audioElement) {
     try {

@@ -20,18 +20,18 @@ const songsArray: Song[] = [
 //class of oll the singers.
 //singer - id, name of the singer, img, genre, songs.
 class Singer {
-    id: string;
-    constructor(public name: string, public img: string, public genre: string, public songs: Song[]) {
-        this.id = Math.random().toString(16).slice(2).toString();
+    
+    constructor(public id:number, public name: string, public img: string, public genre: string, public songs: Song[]) {
+        
     }
 }
 
 const singersArray: Singer[] = getSingersFromLocalStorage();
 if (singersArray.length === 0) {
-    const singer1 = new Singer('Red Band', '../dist/media/220px-Red_-_band_press_photo.jpg', 'rock', [songsArray[0]]);
-    const singer2 = new Singer('Justin Bieber', '../dist/media/justin-bieber-gettyimages-1202421980.jpg', 'pop', [songsArray[1]]);
-    const singer3 = new Singer('Maroon 5', '../dist/media/maroon-e9cb8c5b25b4d1f3e68aa26e6a0ce51cf2ae59d8-s1100-c50.jpg', 'pop', [songsArray[2]]);
-    const singer4 = new Singer('עומר אדם', '../dist/media/עומר_אדם_צילום_שי_פרנקו_(cropped).jpg', 'mediterranean', [songsArray[3], songsArray[4]]);
+    const singer1 = new Singer(1,'Red Band', '../dist/media/220px-Red_-_band_press_photo.jpg', 'rock', [songsArray[0]]);
+    const singer2 = new Singer(2,'Justin Bieber', '../dist/media/justin-bieber-gettyimages-1202421980.jpg', 'pop', [songsArray[1]]);
+    const singer3 = new Singer(3,'Maroon 5', '../dist/media/maroon-e9cb8c5b25b4d1f3e68aa26e6a0ce51cf2ae59d8-s1100-c50.jpg', 'pop', [songsArray[2]]);
+    const singer4 = new Singer(4,'עומר אדם', '../dist/media/עומר_אדם_צילום_שי_פרנקו_(cropped).jpg', 'mediterranean', [songsArray[3], songsArray[4]]);
     singersArray.push(singer1, singer2, singer3, singer4);
 };
 console.log(singersArray[3].songs)
@@ -101,7 +101,7 @@ function getSingersFromLocalStorage(): Singer[] {
         if (!singersArray) throw new Error('Singers not found');
         if (!Array.isArray(singersArray)) throw new Error('singersArray is not array');
 
-        const singers = singersArray.map(singer => new Singer(singer.name, singer.img, singer.genre, singer.songs));
+        const singers = singersArray.map(singer => new Singer(singer.id,singer.name, singer.img, singer.genre, singer.songs));
         return singers;
     } catch (error) {
         console.error(error);

@@ -22,21 +22,21 @@ var songsArray = [
 //class of oll the singers.
 //singer - id, name of the singer, img, genre, songs.
 var Singer = /** @class */ (function () {
-    function Singer(name, img, genre, songs) {
+    function Singer(id, name, img, genre, songs) {
+        this.id = id;
         this.name = name;
         this.img = img;
         this.genre = genre;
         this.songs = songs;
-        this.id = Math.random().toString(16).slice(2).toString();
     }
     return Singer;
 }());
 var singersArray = getSingersFromLocalStorage();
 if (singersArray.length === 0) {
-    var singer1 = new Singer('Red Band', '../dist/media/220px-Red_-_band_press_photo.jpg', 'rock', [songsArray[0]]);
-    var singer2 = new Singer('Justin Bieber', '../dist/media/justin-bieber-gettyimages-1202421980.jpg', 'pop', [songsArray[1]]);
-    var singer3 = new Singer('Maroon 5', '../dist/media/maroon-e9cb8c5b25b4d1f3e68aa26e6a0ce51cf2ae59d8-s1100-c50.jpg', 'pop', [songsArray[2]]);
-    var singer4 = new Singer('עומר אדם', '../dist/media/עומר_אדם_צילום_שי_פרנקו_(cropped).jpg', 'mediterranean', [songsArray[3], songsArray[4]]);
+    var singer1 = new Singer(1, 'Red Band', '../dist/media/220px-Red_-_band_press_photo.jpg', 'rock', [songsArray[0]]);
+    var singer2 = new Singer(2, 'Justin Bieber', '../dist/media/justin-bieber-gettyimages-1202421980.jpg', 'pop', [songsArray[1]]);
+    var singer3 = new Singer(3, 'Maroon 5', '../dist/media/maroon-e9cb8c5b25b4d1f3e68aa26e6a0ce51cf2ae59d8-s1100-c50.jpg', 'pop', [songsArray[2]]);
+    var singer4 = new Singer(4, 'עומר אדם', '../dist/media/עומר_אדם_צילום_שי_פרנקו_(cropped).jpg', 'mediterranean', [songsArray[3], songsArray[4]]);
     singersArray.push(singer1, singer2, singer3, singer4);
 }
 ;
@@ -104,7 +104,7 @@ function getSingersFromLocalStorage() {
             throw new Error('Singers not found');
         if (!Array.isArray(singersArray_1))
             throw new Error('singersArray is not array');
-        var singers = singersArray_1.map(function (singer) { return new Singer(singer.name, singer.img, singer.genre, singer.songs); });
+        var singers = singersArray_1.map(function (singer) { return new Singer(singer.id, singer.name, singer.img, singer.genre, singer.songs); });
         return singers;
     }
     catch (error) {

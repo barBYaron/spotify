@@ -71,9 +71,9 @@ function renderSongs(rootElement, songs) {
 renderSongs(document.querySelector('#recentlyHeard'), songsArray);
 //open play song page.
 function openPlay(song) {
+    localStorage.setItem("selectedSongId", song.id);
     window.location.href = '../playSong/player.html?${song.id}';
-    renderPlayer(song.id);
-    // console.log();
+    // renderPlayer(song.id);
 }
 //get random song.
 function getRandomSong(songs) {
@@ -133,9 +133,7 @@ function renderPlaylist(rootElement, singer) {
         if (!singer)
             throw new Error('Singer not found');
         var html = singer.map(function (singer) {
-            return "\n            <div class=\"playlistBySinger\">\n              <img src=\"" + singer.img + "\">\n              <h3>" + singer.name + "</h3>\n              " + singer.songs.map(function (song) {
-                return "\n                    <audio controls>\n                        <source src=\"" + song.audio + "\" type=\"audio/mpeg\">\n                    </audio>";
-            }).join('') + "\n            </div>";
+            return "\n            <div class=\"playlistBySinger\" onclick=\"renderSingerPage(" + singer.id + ")\">\n              <img src=\"" + singer.img + "\" >\n              <h3>" + singer.name + "</h3>\n            </div>";
         }).join('');
         rootElement.innerHTML = html;
         saveSingersToLocalStorage(singer);
@@ -147,6 +145,12 @@ function renderPlaylist(rootElement, singer) {
     }
 }
 renderPlaylist(document.querySelector('#playlistContainer'), singersArray);
+function renderSingerPage(id) {
+    debugger;
+    console.log("function activated");
+    localStorage.setItem("selectedSinger", id);
+    window.location.href = "../singer/singer.html";
+}
 function search() {
     var searchBar = document.querySelector(".headerSection__searchSection");
     var searchIcon = document.querySelector("#searchLogo");
@@ -184,7 +188,6 @@ function handleSearch(ev) {
 }
 function renderParagraphs(paragraphs, htmlElement) {
     try {
-        debugger;
         if (!htmlElement)
             throw new Error('htmlElement is required');
         var html = paragraphs.map(function (paragraph) { return renderParagraph(paragraph); }).join(' ');
@@ -206,5 +209,3 @@ function renderParagraph(paragraph) {
     }
 }
 //   -----------------------------
-function handleSongClick(id) {
-}

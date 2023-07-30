@@ -79,9 +79,9 @@ renderSongs(document.querySelector('#recentlyHeard'), songsArray);
 
 //open play song page.
 function openPlay(song) {
+    localStorage.setItem("selectedSongId",song.id )
     window.location.href = '../playSong/player.html?${song.id}';
-    renderPlayer(song.id);
-    // console.log();
+    // renderPlayer(song.id);
 }
 
 //get random song.
@@ -153,15 +153,9 @@ function renderPlaylist(rootElement: HTMLElement | null, singer: Singer[]) {
 
         const html = singer.map((singer) => {
             return `
-            <div class="playlistBySinger">
-              <img src="${singer.img}">
+            <div class="playlistBySinger" onclick="renderSingerPage(${singer.id})">
+              <img src="${singer.img}" >
               <h3>${singer.name}</h3>
-              ${singer.songs.map((song) => {
-                return `
-                    <audio controls>
-                        <source src="${song.audio}" type="audio/mpeg">
-                    </audio>`
-            }).join('')}
             </div>`;
         }).join('');
 
@@ -175,8 +169,14 @@ function renderPlaylist(rootElement: HTMLElement | null, singer: Singer[]) {
         return error;
     }
 }
-renderPlaylist(document.querySelector('#playlistContainer'), singersArray);
 
+renderPlaylist(document.querySelector('#playlistContainer'), singersArray);
+function renderSingerPage(id){
+    debugger;
+    console.log("function activated");
+    localStorage.setItem("selectedSinger", id);
+    window.location.href = "../singer/singer.html";
+}
 function search() {
     const searchBar = document.querySelector(".headerSection__searchSection") as HTMLElement;
     const searchIcon = document.querySelector("#searchLogo") as HTMLElement;
@@ -218,7 +218,6 @@ function handleSearch(ev: any) {
 
 function renderParagraphs(paragraphs: (string | undefined)[], htmlElement: HTMLElement | null) {
     try {
-        debugger;
 
         if (!htmlElement) throw new Error('htmlElement is required');
         const html = paragraphs.map(paragraph => renderParagraph(paragraph)).join(' ');
@@ -244,6 +243,3 @@ function renderParagraph(paragraph: string | undefined) {
     }
 }
 //   -----------------------------
-function handleSongClick(id) {
-
-}
