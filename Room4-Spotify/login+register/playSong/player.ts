@@ -2,7 +2,8 @@
 const song: Song[] = getSongsFromLocalStorage();
 const singer: Singer[] = getSingersFromLocalStorage();
 
-
+const songIdSTR = localStorage.getItem("selectedSongId")!;
+const songId = JSON.parse(songIdSTR);
 
 // --------- Song Class with constructor -------
 class AudioElement {
@@ -141,7 +142,7 @@ function renderPlayer(songId) {
     console.error(error);
   }
 }
-///
+renderPlayer(songId);
 
 //------------ Function of song timeline (current time+remain time)
 
@@ -300,7 +301,6 @@ function randomSong() {
   renderPlayer(random.id)
   // console.log(activeSong)
 }
-
 
 
 
