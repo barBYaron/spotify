@@ -81,7 +81,7 @@ renderSongs(document.querySelector('#recentlyHeard'), songsArray);
 
 //open play song page.
 function openPlay(song) {
-    localStorage.setItem("selectedSongId",song.id )
+    localStorage.setItem("selectedSongId", song.id)
     window.location.href = '../playSong/player.html?${song.id}';
     // renderPlayer(song.id);
 }
@@ -173,7 +173,7 @@ function renderPlaylist(rootElement: HTMLElement | null, singer: Singer[]) {
 }
 
 renderPlaylist(document.querySelector('#playlistContainer'), singersArray);
-function renderSingerPage(id){
+function renderSingerPage(id) {
     debugger;
     console.log("function activated");
     localStorage.setItem("selectedSinger", id);
