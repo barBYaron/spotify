@@ -1,4 +1,3 @@
-// debugger;
 var songs = getSongsFromLocalStorage();
 var singers = getSingersFromLocalStorage();
 var singersSong = getSingersSongsFromLocalStorage();
@@ -56,7 +55,8 @@ function renderSongs(rootElement, songs) {
             throw new Error('Root element is not found');
         if (!songs)
             throw new Error('Songs not found');
-        var html = songs.map(function (song) {
+        var slicedSongs = songs.slice(0, 8); // Take the first 6 songs
+        var html = slicedSongs.map(function (song) {
             return "\n                   <button onclick=\"openPlay(this)\" class=\"recentlyHeard__box\" id=\"" + song.id + "\">\n                     <img src=\"" + song.img + "\">\n                     <h3>" + song.name + "</h3>\n                 </button>";
         }).join('');
         rootElement.innerHTML = html;
@@ -100,7 +100,7 @@ function displayRandomSong(rootElement, songs) {
             throw new Error('Songs not found');
         var randomSong = getRandomSong(songs);
         if (randomSong && rootElement) {
-            var html = "\n        <button onclick=\"openPlay()\" class=\"randomSong\">\n          <img src=\"" + randomSong.img + "\" alt=\"" + randomSong.name + "\">\n          <h2>" + randomSong.name + "</h2>\n        </button> ";
+            var html = "\n        <button onclick=\"openPlay(this)\" class=\"randomSong\" id=\"" + randomSong.id + "\">\n          <img src=\"" + randomSong.img + "\" alt=\"" + randomSong.name + "\">\n          <h2>" + randomSong.name + "</h2>\n        </button> ";
             rootElement.innerHTML = html;
         }
     }

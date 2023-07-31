@@ -1,4 +1,3 @@
-// debugger;
 const songs: Song[] = getSongsFromLocalStorage();
 const singers: Singer[] = getSingersFromLocalStorage();
 const singersSong: SingersSong[] = getSingersSongsFromLocalStorage();
@@ -58,7 +57,10 @@ function renderSongs(
         if (!rootElement) throw new Error('Root element is not found');
         if (!songs) throw new Error('Songs not found');
 
-        const html = songs.map((song) => {
+        const slicedSongs = songs.slice(0, 8); // Take the first 6 songs
+
+
+        const html = slicedSongs.map((song) => {
             return `
                    <button onclick="openPlay(this)" class="recentlyHeard__box" id="${song.id}">
                      <img src="${song.img}">
@@ -112,7 +114,7 @@ function displayRandomSong(rootElement: HTMLElement | null, songs: Song[]): void
 
         if (randomSong && rootElement) {
             const html = `
-        <button onclick="openPlay()" class="randomSong">
+        <button onclick="openPlay(this)" class="randomSong" id="${randomSong.id}">
           <img src="${randomSong.img}" alt="${randomSong.name}">
           <h2>${randomSong.name}</h2>
         </button> `;
