@@ -19,4 +19,25 @@ songsArr.forEach(function (option) {
         singerSongs.push(option);
     }
 });
-console.log(singerSongs);
+//creates the top header background img dinamicly
+debugger;
+var topHeader = document.querySelector(".topHeader");
+topHeader.style.backgroundImage = "url(" + singer.img + ")";
+topheaderCreator(topHeader);
+function topheaderCreator(div) {
+    var html = "<h1 class=\"topHeader__name\">" + singer.name + "</h1>";
+    div.innerHTML += html;
+}
+songsCreator(singerSongs);
+function songsCreator(songs) {
+    var songsRoot = document.querySelector(".songsRoot");
+    var html = songs.map(function (song) {
+        debugger;
+        return "\n    <div class=\"songsRoot__song\" onclick=\"openPlay(" + song.id + ")\">\n    <img class=\"songsRoot__song__img\" src=\"" + song.img + "\" alt=\"\">\n    <div \"songsRoot__song__name\">" + song.name + "</div>\n    </div>";
+    }).join('');
+    songsRoot.innerHTML = html;
+}
+function openPlay(song) {
+    localStorage.setItem("selectedSongId", song);
+    window.location.href = '../playSong/player.html?${song.id}';
+}
