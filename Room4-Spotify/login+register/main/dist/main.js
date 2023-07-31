@@ -2,6 +2,19 @@
 var songs = getSongsFromLocalStorage();
 var singers = getSingersFromLocalStorage();
 var singersSong = getSingersSongsFromLocalStorage();
+//detect the profile you singedIn/Registered with
+var profileID = localStorage.getItem("profileID");
+var profiles = localStorage.getItem("profiles");
+var profilesArr = JSON.parse(profiles);
+var selectedProfilearr = profilesArr.filter(function (profile) { return (profile.id == profileID); });
+var selectedProfile = selectedProfilearr[0];
+console.log(selectedProfile);
+//changing the document title
+var docTitle = document.querySelector("#docTitle");
+docTitleDynamic(docTitle, selectedProfile);
+function docTitleDynamic(div, profile) {
+    div.innerHTML = "SoundMaster - " + profile.firstName + "'s page";
+}
 //Makes a beautiful transition between the sections.
 //copy from register.ts
 var observerr = new IntersectionObserver(function (entries) {
@@ -17,6 +30,13 @@ var observerr = new IntersectionObserver(function (entries) {
 var hiddennElements = document.querySelectorAll('.hiddenn');
 hiddennElements.forEach(function (el) { return observerr.observe(el); });
 //
+greetingByName();
+function greetingByName() {
+    var name = selectedProfile.firstName;
+    var div = document.querySelector("#greeting");
+    var html = "<h1>Hello " + name + "!</h1>";
+    div.innerHTML = html;
+}
 function getGreetingByTimeOfDay(rootElement, currentTime) {
     try {
         if (!rootElement)

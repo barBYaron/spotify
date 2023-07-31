@@ -1,7 +1,16 @@
 class profile {
-    constructor(public id: number, public firstName: string, public lastName: string, public username: string, public password: string) { }
+    constructor(public id: number, public firstName: string, public lastName: string, public username: string, public password: string) {
+    }
+
 }
-const profilesArr: profile[] = [];
+let profilesArr: profile[] = [];
+debugger;
+if (getstoreProfile() == null) {
+    profilesArr = [];
+}
+else {
+    profilesArr = getstoreProfile();
+}
 function registerProfile(ev: any) {
     try {
         ev.preventDefault();
@@ -20,10 +29,14 @@ function registerProfile(ev: any) {
 
 
 }
-function storeProfile(){
+function storeProfile() {
     const profilesArrSTR = JSON.stringify(profilesArr);
     localStorage.setItem("profiles", profilesArrSTR)
     redirectPage()
+}
+function getstoreProfile() {
+    const profilesStr = localStorage.getItem("profiles")!;
+    return JSON.parse(profilesStr);
 }
 
 const submitButton = document.querySelector("#registerSubmit") as HTMLElement
@@ -67,11 +80,13 @@ function submitHide() {
 
 }
 
-function redirectPage(){
+function redirectPage() {
     window.location.href = "../redirect/redirect.html"
     redirectToMain()
 }
 
-function redirectToMain(){
+function redirectToMain() {
+    const id = JSON.stringify(profilesArr.length)
+    localStorage.setItem("profileID", id);
     window.location.href = "../main/main.html"
 }

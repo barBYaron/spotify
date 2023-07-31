@@ -9,6 +9,13 @@ var profile = /** @class */ (function () {
     return profile;
 }());
 var profilesArr = [];
+debugger;
+if (getstoreProfile() == null) {
+    profilesArr = [];
+}
+else {
+    profilesArr = getstoreProfile();
+}
 function registerProfile(ev) {
     try {
         ev.preventDefault();
@@ -28,6 +35,10 @@ function storeProfile() {
     var profilesArrSTR = JSON.stringify(profilesArr);
     localStorage.setItem("profiles", profilesArrSTR);
     redirectPage();
+}
+function getstoreProfile() {
+    var profilesStr = localStorage.getItem("profiles");
+    return JSON.parse(profilesStr);
 }
 var submitButton = document.querySelector("#registerSubmit");
 var passwordINS = document.querySelector("#passwordINS");
@@ -67,5 +78,7 @@ function redirectPage() {
     redirectToMain();
 }
 function redirectToMain() {
+    var id = JSON.stringify(profilesArr.length);
+    localStorage.setItem("profileID", id);
     window.location.href = "../main/main.html";
 }
