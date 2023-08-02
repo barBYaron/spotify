@@ -9,6 +9,16 @@ body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+  text-align: center;
+}
+
+section {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .headerSection {
@@ -40,13 +50,6 @@ body {
   color: #ffffff;
 }
 
-section {
-  display: grid;
-  place-items: center;
-  align-content: center;
-  min-height: 100vh;
-}
-
 .hiddenn {
   opacity: 0;
   transition: all 2s ease-in-out;
@@ -68,49 +71,61 @@ section {
   text-align: center;
 }
 
-.recentlyHeard {
-  position: relative;
-  width: 80vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 1vw;
-}
-.recentlyHeard__box {
-  width: 280px;
-  height: 200px;
-  background-color: rgba(51, 51, 51, 0);
+.box {
+  width: 260px;
+  height: 300px;
+  background-color: rgba(215, 57, 57, 0);
   border: none;
   color: #ffffff;
   cursor: pointer;
 }
-.recentlyHeard__box img {
-  width: 100%;
-  height: 90%;
+.box img {
+  width: 250px;
+  height: 250px;
   border-radius: 10px;
+  float: right;
 }
-.recentlyHeard__box h3 {
-  text-align: center;
+.box h3 {
+  position: relative;
+  top: 2vh;
+}
+
+#recentlyHeard {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.recentlyHeard {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-shadow: 4px 4px 16px #39b345 50%;
+  cursor: pointer;
 }
 
 #randomSong {
   position: relative;
   width: 50vw;
   height: 33vh;
-  background-color: #333333;
+  background-color: rgba(51, 51, 51, 0.282);
+  box-shadow: 4px 4px 16px #39b345 50%;
   padding: 15px;
   border-radius: 10px;
 }
 
 .randomSong {
   position: relative;
-  background-color: rgba(51, 51, 51, 0);
+  background-color: rgba(184, 88, 88, 0);
   border: none;
   color: #ffffff;
   float: right;
   cursor: pointer;
 }
 .randomSong img {
+  position: relative;
+  top: 2vh;
   width: 20vw;
   height: 30vh;
   border-radius: 10px;
@@ -125,35 +140,16 @@ section {
 
 #playlistContainer {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .playlistBySinger {
   position: relative;
-  width: 20vw;
-  height: 35vh;
-  background-color: #333333;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
+  box-shadow: 4px 4px 16px #39b345 50%;
   cursor: pointer;
-}
-.playlistBySinger img {
-  width: 20vw;
-  height: 30vh;
-  border-radius: 10px;
-  float: right;
-}
-.playlistBySinger h3 {
-  position: relative;
-  top: 2vh;
-}
-.playlistBySinger audio {
-  position: relative;
-  top: -8vh;
-  width: 6vw;
-  height: 3vh;
+  justify-content: space-around;
+  margin: auto;
 }
 
 #homeLogo {
@@ -194,4 +190,111 @@ section {
   position: absolute;
   top: 4vh;
   left: 4vw;
+}
+
+@media only screen and (max-width: 1150px) {
+  section {
+    max-width: 1000px;
+  }
+
+  .box {
+    width: 220px;
+    height: 260px;
+  }
+  .box img {
+    width: 210px;
+    height: 210px;
+  }
+
+  #randomSong {
+    width: 400px;
+    height: 33vh;
+    background-color: rgba(51, 51, 51, 0);
+    left: -5vw;
+  }
+
+  .randomSong {
+    background-color: rgba(184, 88, 88, 0);
+    border: none;
+    color: #ffffff;
+    float: right;
+    cursor: pointer;
+  }
+  .randomSong img {
+    width: 250px;
+    height: 250px;
+  }
+  .randomSong h2 {
+    top: 11vh;
+    right: 0vw;
+    transform: rotate(-90deg);
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  #playlistContainer {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .playlistBySinger {
+    position: relative;
+    box-shadow: 4px 4px 16px #39b345 50%;
+    cursor: pointer;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2vw;
+  }
+}
+@media only screen and (max-width: 950px) {
+  section {
+    max-width: 900px;
+  }
+
+  .box {
+    width: 200px;
+    height: 240px;
+  }
+  .box img {
+    width: 190px;
+    height: 190px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  section {
+    max-width: 600px;
+  }
+
+  .box {
+    width: 150px;
+    height: 190px;
+  }
+  .box img {
+    width: 140px;
+    height: 140px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .hedlain {
+    position: relative;
+    top: 3vh;
+    font-size: 25px;
+    font-weight: 400;
+    color: #e7d5d5;
+  }
+
+  .randomSong {
+    left: -7vw;
+  }
+  .randomSong img {
+    width: 200px;
+    height: 200px;
+  }
+  .randomSong h2 {
+    top: 9vh;
+    right: -4vw;
+    font-size: 20px;
+    font-weight: 500;
+  }
 }

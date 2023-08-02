@@ -55,9 +55,9 @@ function renderSongs(rootElement, songs) {
             throw new Error('Root element is not found');
         if (!songs)
             throw new Error('Songs not found');
-        var slicedSongs = songs.slice(0, 8); // Take the first 6 songs
+        var slicedSongs = songs.slice(0, 4); // Take the first 6 songs
         var html = slicedSongs.map(function (song) {
-            return "\n                   <button onclick=\"openPlay(this)\" class=\"recentlyHeard__box\" id=\"" + song.id + "\">\n                     <img src=\"" + song.img + "\">\n                     <h3>" + song.name + "</h3>\n                 </button>";
+            return "\n                   <button class=\"recentlyHeard__box box\" onclick=\"openPlay(this)\" id=\"" + song.id + "\">\n                     <img src=\"" + song.img + "\">\n                     <h3>" + song.name + "</h3>\n                 </button>";
         }).join('');
         rootElement.innerHTML = html;
         saveSongsToLocalStorage(songsArray);
@@ -133,7 +133,7 @@ function renderPlaylist(rootElement, singer) {
         if (!singer)
             throw new Error('Singer not found');
         var html = singer.map(function (singer) {
-            return "\n            <div class=\"playlistBySinger\" onclick=\"renderSingerPage(" + singer.id + ")\">\n              <img src=\"" + singer.img + "\" >\n              <h3>" + singer.name + "</h3>\n            </div>";
+            return "\n            <div class=\"playlistBySinger box\" onclick=\"renderSingerPage(" + singer.id + ")\">\n              <img src=\"" + singer.img + "\" >\n              <h3>" + singer.name + "</h3>\n            </div>";
         }).join('');
         rootElement.innerHTML = html;
         saveSingersToLocalStorage(singer);

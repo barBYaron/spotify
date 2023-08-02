@@ -57,12 +57,12 @@ function renderSongs(
         if (!rootElement) throw new Error('Root element is not found');
         if (!songs) throw new Error('Songs not found');
 
-        const slicedSongs = songs.slice(0, 8); // Take the first 6 songs
+        const slicedSongs = songs.slice(0, 4); // Take the first 6 songs
 
 
         const html = slicedSongs.map((song) => {
             return `
-                   <button onclick="openPlay(this)" class="recentlyHeard__box" id="${song.id}">
+                   <button class="recentlyHeard__box box" onclick="openPlay(this)" id="${song.id}">
                      <img src="${song.img}">
                      <h3>${song.name}</h3>
                  </button>`;
@@ -155,7 +155,7 @@ function renderPlaylist(rootElement: HTMLElement | null, singer: Singer[]) {
 
         const html = singer.map((singer) => {
             return `
-            <div class="playlistBySinger" onclick="renderSingerPage(${singer.id})">
+            <div class="playlistBySinger box" onclick="renderSingerPage(${singer.id})">
               <img src="${singer.img}" >
               <h3>${singer.name}</h3>
             </div>`;

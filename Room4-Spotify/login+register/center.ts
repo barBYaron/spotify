@@ -31,7 +31,6 @@ const songsArray: Song[] = [
     new Song(25, 'Intentions', 'Justin Bieber', new Audio('../dist/media/[YT2mp3.info] - Justin Bieber - Intentions (Official Video (Short Version)) ft. Quavo (128kbps).mp3'), '../dist/media/justin-bieber-gettyimages-1202421980.jpg'),
     new Song(26, 'Sorry', 'Justin Bieber', new Audio('../dist/media/[YT2mp3.info] - Justin Bieber - Sorry (PURPOSE _ The Movement) (128kbps).mp3'), '../dist/media/justin-bieber-gettyimages-1202421980.jpg'),
     new Song(27, 'What Do You Mean', 'Justin Bieber', new Audio('../dist/media/[YT2mp3.info] - Justin Bieber - What Do You Mean_ (128kbps).mp3'), '../dist/media/justin-bieber-gettyimages-1202421980.jpg'),
-   
     new Song(28, 'Memories', 'Maroon 5', new Audio('../dist/media/[YT2mp3.info] - Maroon 5 - Memories (Official Video) (128kbps).mp3'), '../dist/media/maroon-e9cb8c5b25b4d1f3e68aa26e6a0ce51cf2ae59d8-s1100-c50.jpg'),
     new Song(29, 'One More Night', 'Maroon 5', new Audio('../dist/media/[YT2mp3.info] - Maroon 5 - One More Night (Official Music Video) (128kbps).mp3'), '../dist/media/maroon-e9cb8c5b25b4d1f3e68aa26e6a0ce51cf2ae59d8-s1100-c50.jpg'),
     new Song(30, 'Payphone', 'Maroon 5', new Audio('../dist/media/[YT2mp3.info] - Maroon 5 - Payphone ft. Wiz Khalifa (Explicit) (Official Music Video) (128kbps).mp3'), '../dist/media/maroon-e9cb8c5b25b4d1f3e68aa26e6a0ce51cf2ae59d8-s1100-c50.jpg'),
