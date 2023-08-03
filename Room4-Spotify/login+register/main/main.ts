@@ -2,6 +2,20 @@ const songs: Song[] = getSongsFromLocalStorage();
 const singers: Singer[] = getSingersFromLocalStorage();
 const singersSong: SingersSong[] = getSingersSongsFromLocalStorage();
 
+//detect the profile you singedIn/Registered with
+const profileID = localStorage.getItem("profileID");
+const profiles = localStorage.getItem("profiles")!
+const profilesArr:Profile[] = JSON.parse(profiles);
+const selectedProfilearr = profilesArr.filter(profile=>(profile.id==profileID));
+const selectedProfile = selectedProfilearr[0]
+console.log(selectedProfile);
+//changing the document title
+const docTitle= document.querySelector("#docTitle") as HTMLElement;
+docTitleDynamic(docTitle,selectedProfile)
+function docTitleDynamic(div:HTMLElement, profile:Profile){
+div.innerHTML = `SoundMaster - ${profile.firstName}'s page`
+}
+
 //Makes a beautiful transition between the sections.
 //copy from register.ts
 const observerr = new IntersectionObserver((entries) => {
@@ -18,7 +32,13 @@ const observerr = new IntersectionObserver((entries) => {
 const hiddennElements = document.querySelectorAll('.hiddenn')
 hiddennElements.forEach((el) => observerr.observe(el))
 //
-
+greetingByName();
+function greetingByName(){
+    const name = selectedProfile.firstName;
+    const div = document.querySelector("#greeting") as HTMLElement;
+    const html = `<h1>Hello ${name}!</h1>`
+    div.innerHTML = html;
+}
 function getGreetingByTimeOfDay(rootElement: HTMLElement | null, currentTime: Date): void {
     try {
         if (!rootElement) throw new Error("rootElement is null or undefined");
