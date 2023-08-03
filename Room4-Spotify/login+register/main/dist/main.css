@@ -171,19 +171,28 @@ section {
 .found {
   display: flex;
   flex-direction: column;
-  width: 20vw;
-  height: 5vh;
-  position: absolute;
+  width: 14vw;
+  height: 6vh;
   left: 8vw;
   top: 4vh;
-  background-color: azure;
+  background-color: rgba(224, 224, 224, 0.32);
+  border-radius: 10px;
+  color: #ffebeb;
+  font-family: -webkit-body;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+}
+.found:hover {
+  transform: scale(1.1);
+  background-color: rgba(224, 224, 224, 0.6);
 }
 .found__img {
-  width: 3vw;
-  height: 4.6vh;
-  position: absolute;
-  right: 0;
-  top: 0;
+  width: 5vw;
+  height: 100%;
+  position: relative;
+  left: 8.2vw;
+  border-radius: 10px;
+  bottom: 3.6vh;
 }
 
 .header {
@@ -297,4 +306,12 @@ section {
     font-size: 20px;
     font-weight: 500;
   }
+}
+#headerSection__paragraphs {
+  display: flex;
+  flex-direction: column;
+  width: 14vw;
+  position: absolute;
+  left: 8vw;
+  top: 4vh;
 }

@@ -228,4 +228,9 @@ function renderParagraph(paragraph) {
         console.error(error);
     }
 }
+function handleSongClick(songID) {
+    localStorage.setItem("selectedSongId", songID);
+    window.location.href = '../playSong/player.html?${songID}';
+    // renderPlayer(song.id);
+}
 //   -----------------------------
