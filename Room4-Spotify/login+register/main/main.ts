@@ -219,6 +219,7 @@ function idControll(paragraph) {
 
 // RegExp
 function handleSearch(ev: any) {
+    debugger;
     try {
         const searchTerms = ev.target.value;
         const pattern = new RegExp(searchTerms, 'i');
@@ -271,3 +272,8 @@ function handleSongClick(songID) {
     // renderPlayer(song.id);
 }
 //   -----------------------------
+// Dynamic Playlists
+const playlistSection = document.querySelector(".playlists__root") as HTMLElement;
+function createPlaylist(){
+    window.location.href="../playlists/playlists.html"
+}

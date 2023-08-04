@@ -191,6 +191,7 @@ function idControll(paragraph) {
 }
 // RegExp
 function handleSearch(ev) {
+    debugger;
     try {
         var searchTerms_1 = ev.target.value;
         var pattern_1 = new RegExp(searchTerms_1, 'i');
@@ -234,3 +235,8 @@ function handleSongClick(songID) {
     // renderPlayer(song.id);
 }
 //   -----------------------------
+// Dynamic Playlists
+var playlistSection = document.querySelector(".playlists__root");
+function createPlaylist() {
+    window.location.href = "../playlists/playlists.html";
+}
