@@ -36,7 +36,7 @@ function renderPlayer(songId) {
         activeSong = audioElements.find(function (song) { return song.id === songId; });
         if (activeSong !== undefined) {
             activeSong.audio.play();
-            var html = "\n        <div class=\"player\" id=\"" + activeSong.id + "\" style=\"background-image:url('" + activeSong.img + "')\">\n          <div class=\"player__collapse\">\n            <i class=\"fa-solid fa-angle-down\"></i>\n          </div>\n          <div class=\"player__header\">\n          <div class=\"player__title-thumb\" style=\"background-image: url('" + activeSong.img + "')\"></div>\n          <div class=\"player__title\">\n              <div class=\"player__title-song\">" + activeSong.name + "</div>\n              <div class=\"player__title-artist\">" + activeSong.artist + "</div>\n            </div>\n            <div class=\"player__header-play\" onclick=\"playPause(activeSong)\"><i class=\"fa-sharp fa-solid fa-play\"></i></div>\n          </div>\n          <div class=\"player__image\"\n          style=\"background-image: url('" + activeSong.img + "')\">\n        </div>\n        <div class=\"player__controls\">\n        <audio id=\"audio\"src=\"" + activeSong.audio.src + "\"></audio>\n        <div id=\"progress-container\">\n            <div id=\"progress\" class=\"timeBar__progress\"></div>\n            <div id=\"time\"></div>\n        </div>\n   \n      \n      <div class=\"buttons\">";
+            var html = "\n        <div class=\"player\" id=\"" + activeSong.id + "\" style=\"background-image:url('" + activeSong.img + "')\">\n          <div class=\"player__collapse\">\n            <i class=\"fa-solid fa-angle-down\"></i>\n          </div>\n          <div class=\"player__header\">\n          <div class=\"player__title-thumb\" style=\"background-image: url('" + activeSong.img + "')\"></div>\n          <div class=\"player__title\">\n              <div class=\"player__title-song\">" + activeSong.name + "</div>\n              <div onclick=\"renderSingerPage()\" class=\"player__title-artist\">" + activeSong.artist + "</div>\n            </div>\n            <div class=\"player__header-play\" onclick=\"playPause(activeSong)\"><i class=\"fa-sharp fa-solid fa-play\"></i></div>\n          </div>\n          <div class=\"player__image\"\n          style=\"background-image: url('" + activeSong.img + "')\">\n        </div>\n        <div class=\"player__controls\">\n        <audio id=\"audio\"src=\"" + activeSong.audio.src + "\"></audio>\n        <div id=\"progress-container\">\n            <div id=\"progress\" class=\"timeBar__progress\"></div>\n            <div id=\"time\"></div>\n        </div>\n   \n      \n      <div class=\"buttons\">";
             if (shuffle) {
                 html += '<div class="shuffleBtn" onclick="shuffleBtn(audioElements)" style="color:red;"><i class="fa-solid fa-shuffle"></i></div>';
             }
@@ -205,4 +205,10 @@ function randomSong() {
     console.log(random);
     renderPlayer(random.id);
     // console.log(activeSong)
+}
+function renderSingerPage() {
+    debugger;
+    console.log("function activated");
+    localStorage.setItem("selectedSinger", activeSong.id);
+    window.location.href = "../singer/singer.html";
 }
