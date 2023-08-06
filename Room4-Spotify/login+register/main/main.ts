@@ -272,8 +272,3 @@ function handleSongClick(songID) {
     // renderPlayer(song.id);
 }
 //   -----------------------------
-// Dynamic Playlists
-const playlistSection = document.querySelector(".playlists__root") as HTMLElement;
-function createPlaylist(){
-    window.location.href="../playlists/playlists.html"
-}

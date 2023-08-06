@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../dist/center.js" defer></script>
-    <script src="../main/main.ts" defer></script>
+    <script src="../main/dist/main.js" defer></script>
     <script src="./dist/playlists.js" defer></script>
 
     <link rel="stylesheet" href="./dist/playlists.css">
     <link rel="stylesheet" href="../dist/center.css">
+    <link rel="stylesheet" href="../main/dist/main.css">
 
     <title>Document</title>
 </head>
+
 <body>
-   <h1 id="header"> create your unique playlist</h1>
-   <input oninput="handleSearch(event)" name="songInput" type="text" class="headerSection__searchSection">
+    <div class="wrapper">
+        <h1 id="header"> create your unique playlist</h1>
+        <input oninput="handleSearchPlaylists(event)" name="songInput" id="searchSolution" type="text"
+            class="headerSection__searchSection">
+        <div class="searchSolution"></div>
+        <div class="playlistRoot"></div>
+        <form id="form" onsubmit="createdPlaylistDone(event)">
+        <input type="text" name="name" id="name" placeholder="Name Your Playlist">
+        <input id="submit" type="submit">
+        </form>
+    </div>
 </body>
+
 </html>
