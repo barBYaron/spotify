@@ -161,6 +161,11 @@ overflow-x: hidden;
       margin-top: 20px;
       color: $mainColor;
       background-color: rgba($color: #000000, $alpha: .2);
+      cursor: pointer;
+      transition: all 100ms ease-in-out;
+      &:hover{
+        transform: scale(1.1);
+      }
       
      
     

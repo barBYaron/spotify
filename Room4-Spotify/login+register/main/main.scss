@@ -1,3 +1,11 @@
+@mixin transform{
+    transition: all 100ms ease-in-out;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+// -------------------
 html {
     scroll-behavior: smooth;
 }
@@ -82,6 +90,8 @@ section {
     border: none;
     color: #ffffff;
     cursor: pointer;
+    @include transform;
+
 
     img {
         width: 250px;
@@ -116,11 +126,12 @@ section {
     position: relative;
     width: 50vw;
     height: 33vh;
-    background-color: rgba(51, 51, 51, 0.282);
-    // box-shadow: 4px 4px 16px  rgba(0, 0, 0, 0.312);
+    background: rgb(223,195,207);
+background: radial-gradient(circle, rgba(223,195,207,1) 0%, rgba(31,32,34,1) 100%);
     box-shadow: 4px 4px 16px rgba(57, 179, 69, 1) 50%;
     padding: 15px;
     border-radius: 10px;
+    @include transform;
 }
 
 .randomSong {

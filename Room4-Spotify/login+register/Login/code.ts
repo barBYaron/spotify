@@ -27,11 +27,16 @@ function handleProfile(ev:any){
     }
 }
 function profileCheck(tryUserName, tryPassword){
-const profiles = localStorage.getItem("profiles")!
+    try {
+        const profiles = localStorage.getItem("profiles")!
 const profilesSTR:profile[] = JSON.parse(profiles);
 profilesSTR.forEach(prof => {
     if(prof.username===tryUserName && prof.password===tryPassword){
         return prof.id;
     }
 })
+    } catch (error) {
+        console.error(error);
+    }
+
 }

@@ -78,6 +78,10 @@ section {
   border: none;
   color: #ffffff;
   cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+.box:hover {
+  transform: scale(1.1);
 }
 .box img {
   width: 250px;
@@ -109,10 +113,15 @@ section {
   position: relative;
   width: 50vw;
   height: 33vh;
-  background-color: rgba(51, 51, 51, 0.282);
+  background: #dfc3cf;
+  background: radial-gradient(circle, #dfc3cf 0%, #1f2022 100%);
   box-shadow: 4px 4px 16px #39b345 50%;
   padding: 15px;
   border-radius: 10px;
+  transition: all 100ms ease-in-out;
+}
+#randomSong:hover {
+  transform: scale(1.1);
 }
 
 .randomSong {
