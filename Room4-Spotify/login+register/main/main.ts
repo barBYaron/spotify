@@ -271,4 +271,3 @@ function handleSongClick(songID) {
     window.location.href = '../playSong/player.html?${songID}';
     // renderPlayer(song.id);
 }
-//   -----------------------------

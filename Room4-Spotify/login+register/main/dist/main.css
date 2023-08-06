@@ -351,3 +351,51 @@ section {
   width: 80vw;
   gap: 5vh;
 }
+
+.genresHeader {
+  position: relative;
+  top: -10vh;
+}
+
+.genresdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+  width: 100vw;
+}
+
+.genres {
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  height: 40vh;
+  gap: 2vw;
+  align-items: center;
+  justify-content: center;
+  background: #c4c3df;
+  background: radial-gradient(circle, #c4c3df 0%, #dfc3cf 32%, rgba(31, 32, 34, 0) 48%);
+}
+.genres__genre {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-size: contain;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+.genres__genre:hover {
+  transform: scale(1.1);
+}
+
+#rock {
+  background-image: url(https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9jayUyMG11c2ljfGVufDB8fDB8fHww&w=1000&q=80);
+}
+
+#pop {
+  background-image: url(https://pyxis.nymag.com/v1/imgs/3a3/b1f/2141226b8ab1ae07afe4b541ee0d2b0825-11-yic-pop-essay.2x.h473.w710.jpg);
+}
+
+#mediterranean {
+  background-image: url(https://cdn.i24news.tv/uploads/54/82/46/9a/76/95/00/e4/95/7e/93/ae/20/ce/c6/f7/5482469a769500e4957e93ae20cec6f7.png);
+}

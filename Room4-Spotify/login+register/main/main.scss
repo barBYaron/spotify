@@ -1,6 +1,7 @@
-@mixin transform{
+@mixin transform {
     transition: all 100ms ease-in-out;
-    &:hover{
+
+    &:hover {
         transform: scale(1.1);
     }
 }
@@ -126,8 +127,8 @@ section {
     position: relative;
     width: 50vw;
     height: 33vh;
-    background: rgb(223,195,207);
-background: radial-gradient(circle, rgba(223,195,207,1) 0%, rgba(31,32,34,1) 100%);
+    background: rgb(223, 195, 207);
+    background: radial-gradient(circle, rgba(223, 195, 207, 1) 0%, rgba(31, 32, 34, 1) 100%);
     box-shadow: 4px 4px 16px rgba(57, 179, 69, 1) 50%;
     padding: 15px;
     border-radius: 10px;
@@ -395,4 +396,51 @@ background: radial-gradient(circle, rgba(223,195,207,1) 0%, rgba(31,32,34,1) 100
 
         }
     }
+}
+
+.genresHeader {
+    position: relative;
+    top: -10vh;
+}
+
+.genresdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    width: 100vw;
+}
+
+.genres {
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+    height: 40vh;
+    gap: 2vw;
+    align-items: center;
+    justify-content: center;
+background: rgb(196,195,223);
+background: radial-gradient(circle, rgba(196,195,223,1) 0%, rgba(223,195,207,1) 32%, rgba(31,32,34,0) 48%);    &__genre {
+        width: 200px;
+        height: 200px;
+
+        border-radius: 50%;
+        background-size: contain;
+        cursor: pointer;
+        @include transform();
+
+
+    }
+}
+
+#rock {
+    background-image: url(https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9jayUyMG11c2ljfGVufDB8fDB8fHww&w=1000&q=80);
+}
+
+#pop {
+    background-image: url(https://pyxis.nymag.com/v1/imgs/3a3/b1f/2141226b8ab1ae07afe4b541ee0d2b0825-11-yic-pop-essay.2x.h473.w710.jpg);
+}
+
+#mediterranean {
+    background-image: url(https://cdn.i24news.tv/uploads/54/82/46/9a/76/95/00/e4/95/7e/93/ae/20/ce/c6/f7/5482469a769500e4957e93ae20cec6f7.png);
 }
