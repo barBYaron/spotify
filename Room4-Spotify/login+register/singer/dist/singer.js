@@ -1,7 +1,9 @@
 var singersArr = getSingersFromLocalStorage();
 var songsArr = getSongsFromLocalStorage();
 var singer;
-var selectedSinger = localStorage.getItem("selectedSinger");
+debugger;
+var selectedSingerstored = localStorage.getItem("selectedSinger");
+var selectedSinger = JSON.parse(selectedSingerstored);
 singersArr.forEach(function (option) {
     if (option.id == selectedSinger) {
         singer = option;

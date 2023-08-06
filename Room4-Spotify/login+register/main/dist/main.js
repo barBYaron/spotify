@@ -1,7 +1,19 @@
-// debugger;
 var songs = getSongsFromLocalStorage();
 var singers = getSingersFromLocalStorage();
 var singersSong = getSingersSongsFromLocalStorage();
+//detect the profile you singedIn/Registered with
+var profileID = localStorage.getItem("profileID");
+var profiles = localStorage.getItem("profiles");
+var profilesArr = JSON.parse(profiles);
+var selectedProfilearr = profilesArr.filter(function (profile) { return (profile.id == profileID); });
+var selectedProfile = selectedProfilearr[0];
+console.log(selectedProfile);
+//changing the document title
+var docTitle = document.querySelector("#docTitle");
+docTitleDynamic(docTitle, selectedProfile);
+function docTitleDynamic(div, profile) {
+    div.innerHTML = "SoundMaster - " + profile.firstName + "'s page";
+}
 //Makes a beautiful transition between the sections.
 //copy from register.ts
 var observerr = new IntersectionObserver(function (entries) {
@@ -17,6 +29,13 @@ var observerr = new IntersectionObserver(function (entries) {
 var hiddennElements = document.querySelectorAll('.hiddenn');
 hiddennElements.forEach(function (el) { return observerr.observe(el); });
 //
+greetingByName();
+function greetingByName() {
+    var name = selectedProfile.firstName;
+    var div = document.querySelector("#greeting");
+    var html = "<h1>Hello " + name + "!</h1>";
+    div.innerHTML = html;
+}
 function getGreetingByTimeOfDay(rootElement, currentTime) {
     try {
         if (!rootElement)
@@ -56,8 +75,9 @@ function renderSongs(rootElement, songs) {
             throw new Error('Root element is not found');
         if (!songs)
             throw new Error('Songs not found');
-        var html = songs.map(function (song) {
-            return "\n                   <button onclick=\"openPlay(this)\" class=\"recentlyHeard__box\" id=\"" + song.id + "\">\n                     <img src=\"" + song.img + "\">\n                     <h3>" + song.name + "</h3>\n                 </button>";
+        var slicedSongs = songs.slice(0, 4); // Take the first 6 songs
+        var html = slicedSongs.map(function (song) {
+            return "\n                   <button class=\"recentlyHeard__box box\" onclick=\"openPlay(this)\" id=\"" + song.id + "\">\n                     <img src=\"" + song.img + "\">\n                     <h3>" + song.name + "</h3>\n                 </button>";
         }).join('');
         rootElement.innerHTML = html;
         saveSongsToLocalStorage(songsArray);
@@ -100,7 +120,7 @@ function displayRandomSong(rootElement, songs) {
             throw new Error('Songs not found');
         var randomSong = getRandomSong(songs);
         if (randomSong && rootElement) {
-            var html = "\n        <button onclick=\"openPlay()\" class=\"randomSong\">\n          <img src=\"" + randomSong.img + "\" alt=\"" + randomSong.name + "\">\n          <h2>" + randomSong.name + "</h2>\n        </button> ";
+            var html = "\n        <button onclick=\"openPlay(this)\" class=\"randomSong\" id=\"" + randomSong.id + "\">\n          <img src=\"" + randomSong.img + "\" alt=\"" + randomSong.name + "\">\n          <h2>" + randomSong.name + "</h2>\n        </button> ";
             rootElement.innerHTML = html;
         }
     }
@@ -133,7 +153,7 @@ function renderPlaylist(rootElement, singer) {
         if (!singer)
             throw new Error('Singer not found');
         var html = singer.map(function (singer) {
-            return "\n            <div class=\"playlistBySinger\" onclick=\"renderSingerPage(" + singer.id + ")\">\n              <img src=\"" + singer.img + "\" >\n              <h3>" + singer.name + "</h3>\n            </div>";
+            return "\n            <div class=\"playlistBySinger box\" onclick=\"renderSingerPage(" + singer.id + ")\">\n              <img src=\"" + singer.img + "\" >\n              <h3>" + singer.name + "</h3>\n            </div>";
         }).join('');
         rootElement.innerHTML = html;
         saveSingersToLocalStorage(singer);
@@ -171,6 +191,7 @@ function idControll(paragraph) {
 }
 // RegExp
 function handleSearch(ev) {
+    debugger;
     try {
         var searchTerms_1 = ev.target.value;
         var pattern_1 = new RegExp(searchTerms_1, 'i');
@@ -208,4 +229,8 @@ function renderParagraph(paragraph) {
         console.error(error);
     }
 }
-//   -----------------------------
+function handleSongClick(songID) {
+    localStorage.setItem("selectedSongId", songID);
+    window.location.href = '../playSong/player.html?${songID}';
+    // renderPlayer(song.id);
+}

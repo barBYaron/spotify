@@ -2,7 +2,9 @@ const singersArr: Singer[] = getSingersFromLocalStorage();
 const songsArr: Song[] = getSongsFromLocalStorage();
 
 let singer: Singer
-const selectedSinger = localStorage.getItem("selectedSinger");
+debugger;
+const selectedSingerstored = localStorage.getItem("selectedSinger")!;
+const selectedSinger = JSON.parse(selectedSingerstored);
 singersArr.forEach(option => {
     if (option.id == selectedSinger) {
         singer = option;

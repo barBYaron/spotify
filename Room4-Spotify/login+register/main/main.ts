@@ -1,7 +1,20 @@
-// debugger;
 const songs: Song[] = getSongsFromLocalStorage();
 const singers: Singer[] = getSingersFromLocalStorage();
 const singersSong: SingersSong[] = getSingersSongsFromLocalStorage();
+
+//detect the profile you singedIn/Registered with
+const profileID = localStorage.getItem("profileID");
+const profiles = localStorage.getItem("profiles")!
+const profilesArr:Profile[] = JSON.parse(profiles);
+const selectedProfilearr = profilesArr.filter(profile=>(profile.id==profileID));
+const selectedProfile = selectedProfilearr[0]
+console.log(selectedProfile);
+//changing the document title
+const docTitle= document.querySelector("#docTitle") as HTMLElement;
+docTitleDynamic(docTitle,selectedProfile)
+function docTitleDynamic(div:HTMLElement, profile:Profile){
+div.innerHTML = `SoundMaster - ${profile.firstName}'s page`
+}
 
 //Makes a beautiful transition between the sections.
 //copy from register.ts
@@ -19,7 +32,13 @@ const observerr = new IntersectionObserver((entries) => {
 const hiddennElements = document.querySelectorAll('.hiddenn')
 hiddennElements.forEach((el) => observerr.observe(el))
 //
-
+greetingByName();
+function greetingByName(){
+    const name = selectedProfile.firstName;
+    const div = document.querySelector("#greeting") as HTMLElement;
+    const html = `<h1>Hello ${name}!</h1>`
+    div.innerHTML = html;
+}
 function getGreetingByTimeOfDay(rootElement: HTMLElement | null, currentTime: Date): void {
     try {
         if (!rootElement) throw new Error("rootElement is null or undefined");
@@ -58,9 +77,12 @@ function renderSongs(
         if (!rootElement) throw new Error('Root element is not found');
         if (!songs) throw new Error('Songs not found');
 
-        const html = songs.map((song) => {
+        const slicedSongs = songs.slice(0, 4); // Take the first 6 songs
+
+
+        const html = slicedSongs.map((song) => {
             return `
-                   <button onclick="openPlay(this)" class="recentlyHeard__box" id="${song.id}">
+                   <button class="recentlyHeard__box box" onclick="openPlay(this)" id="${song.id}">
                      <img src="${song.img}">
                      <h3>${song.name}</h3>
                  </button>`;
@@ -112,7 +134,7 @@ function displayRandomSong(rootElement: HTMLElement | null, songs: Song[]): void
 
         if (randomSong && rootElement) {
             const html = `
-        <button onclick="openPlay()" class="randomSong">
+        <button onclick="openPlay(this)" class="randomSong" id="${randomSong.id}">
           <img src="${randomSong.img}" alt="${randomSong.name}">
           <h2>${randomSong.name}</h2>
         </button> `;
@@ -153,7 +175,7 @@ function renderPlaylist(rootElement: HTMLElement | null, singer: Singer[]) {
 
         const html = singer.map((singer) => {
             return `
-            <div class="playlistBySinger" onclick="renderSingerPage(${singer.id})">
+            <div class="playlistBySinger box" onclick="renderSingerPage(${singer.id})">
               <img src="${singer.img}" >
               <h3>${singer.name}</h3>
             </div>`;
@@ -197,6 +219,7 @@ function idControll(paragraph) {
 
 // RegExp
 function handleSearch(ev: any) {
+    debugger;
     try {
         const searchTerms = ev.target.value;
         const pattern = new RegExp(searchTerms, 'i');
@@ -242,4 +265,9 @@ function renderParagraph(paragraph: string | undefined) {
         console.error(error)
     }
 }
-//   -----------------------------
+
+function handleSongClick(songID) {
+    localStorage.setItem("selectedSongId", songID)
+    window.location.href = '../playSong/player.html?${songID}';
+    // renderPlayer(song.id);
+}

@@ -23,11 +23,16 @@ function handleProfile(ev) {
     }
 }
 function profileCheck(tryUserName, tryPassword) {
-    var profiles = localStorage.getItem("profiles");
-    var profilesSTR = JSON.parse(profiles);
-    profilesSTR.forEach(function (prof) {
-        if (prof.username === tryUserName && prof.password === tryPassword) {
-            return prof.id;
-        }
-    });
+    try {
+        var profiles = localStorage.getItem("profiles");
+        var profilesSTR = JSON.parse(profiles);
+        profilesSTR.forEach(function (prof) {
+            if (prof.username === tryUserName && prof.password === tryPassword) {
+                return prof.id;
+            }
+        });
+    }
+    catch (error) {
+        console.error(error);
+    }
 }

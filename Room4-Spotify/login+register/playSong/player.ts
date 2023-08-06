@@ -18,6 +18,7 @@ const audioElements: song[] = songsArray;
 //----------- demo array of songs with class AudioElement(song) 
 
 // const audioElements = [];
+const title = document.querySelector("#title") as HTMLElement;
 
 audioElements.push(
   new Song(
@@ -84,7 +85,7 @@ function renderPlayer(songId) {
           <div class="player__title-thumb" style="background-image: url('${activeSong.img}')"></div>
           <div class="player__title">
               <div class="player__title-song">${activeSong.name}</div>
-              <div class="player__title-artist">${activeSong.artist}</div>
+              <div onclick="renderSingerPage()" class="player__title-artist">${activeSong.artist}</div>
             </div>
             <div class="player__header-play" onclick="playPause(activeSong)"><i class="fa-sharp fa-solid fa-play"></i></div>
           </div>
@@ -143,7 +144,7 @@ function renderPlayer(songId) {
   }
 }
 renderPlayer(songId);
-
+title.innerHTML = `${activeSong.artist}-${activeSong.name}`
 //------------ Function of song timeline (current time+remain time)
 
 function updateTimeAndProgress(audioElement) {
@@ -303,4 +304,10 @@ function randomSong() {
 }
 
 
+function renderSingerPage() {
+  debugger;
+  console.log("function activated");
+  localStorage.setItem("selectedSinger", activeSong.id);
+  window.location.href = "../singer/singer.html";
+}
 

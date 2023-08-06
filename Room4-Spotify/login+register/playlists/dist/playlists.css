@@ -1,0 +1,88 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#header {
+  position: absolute;
+  top: 8vh;
+  font-family: system-ui;
+}
+
+#searchSolution {
+  width: 14vw;
+  position: absolute;
+  left: 43vw;
+  top: 18vh;
+}
+
+.searchSolution {
+  position: absolute;
+  top: 22vh;
+  z-index: 2;
+}
+
+.playlistRoot {
+  width: 80vw;
+  height: 20vh;
+  background-color: #71706f14;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5vw;
+  overflow: hidden;
+}
+.playlistRoot__playlistSong {
+  height: 19vh;
+  width: 10vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #848485;
+  border-radius: 10px;
+  justify-content: space-between;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+.playlistRoot__playlistSong:hover {
+  transform: scale(1.1);
+}
+.playlistRoot__playlistSong__img {
+  border-radius: 10px;
+  height: 12vh;
+  width: 10vw;
+}
+
+#name {
+  position: relative;
+  top: 4vh;
+  background-color: azure;
+  font-family: fantasy;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+#name:focus {
+  transform: scale(1.1);
+}
+
+#submit {
+  position: relative;
+  top: 6vh;
+  background-color: azure;
+  font-family: fantasy;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+#submit:hover {
+  transform: scale(1.1);
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
