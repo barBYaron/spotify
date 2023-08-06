@@ -235,8 +235,3 @@ function handleSongClick(songID) {
     // renderPlayer(song.id);
 }
 //   -----------------------------
-// Dynamic Playlists
-var playlistSection = document.querySelector(".playlists__root");
-function createPlaylist() {
-    window.location.href = "../playlists/playlists.html";
-}
