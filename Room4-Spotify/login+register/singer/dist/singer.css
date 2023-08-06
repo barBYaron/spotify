@@ -1,0 +1,58 @@
+body {
+  background: #cf7ea1;
+  background: radial-gradient(circle, #cf7ea1 0%, #494d53 100%);
+  width: 100vw;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.topHeader {
+  width: 70vw;
+  height: 40vh;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.topHeader__name {
+  font-size: 4vw;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.songsRoot {
+  width: 50vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 10vh;
+}
+.songsRoot__song {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 8vh;
+  background-color: rgba(53, 66, 62, 0.151);
+  border-radius: 10px;
+  gap: 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: larger;
+  color: aliceblue;
+  padding-left: 10px;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+.songsRoot__song:hover {
+  transform: scale(1.04);
+  background-color: rgba(54, 143, 116, 0.151);
+}
+.songsRoot__song__img {
+  height: 90%;
+  width: 12%;
+  border-radius: 10px;
+}
